@@ -29,8 +29,12 @@ export default {
 </script>
 <style lang="sass">
 header
-    background-color: #89aa94
+    background-color: #89aa94 
+    height: 10%
+header .container
+    height: 100%
 .topmenu
+    height: 100%
     display: flex
     justify-content: space-between
     align-items: center
@@ -38,7 +42,7 @@ header
         display: flex
         align-items: center
         &-profile
-            padding: 25px 30px
+            padding: 25px 10px
             font-size: 18px
             &:hover
                 transition: 1s
