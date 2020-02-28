@@ -20,6 +20,10 @@ export default {
 }
 </script>
 <style lang="sass">
+a
+  text-decoration: none
+  color: black
+  font-family: 'Proxima Nova Rg'
 #app
   height: 100%
 .container
@@ -36,6 +40,8 @@ button
   border: none
   background: none
   cursor: pointer
+  &:hover, &:focus
+    outline: none
 .app-flex
   height: 90%
   display: flex

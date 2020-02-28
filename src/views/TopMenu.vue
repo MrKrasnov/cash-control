@@ -14,7 +14,9 @@
                 </div>
                 <div>
                     <button class="topmenu-start-profile">
-                        User Name
+                        <router-link :to="'/profile'">
+                            <div @click="currentRouteName = ''">User Name</div>
+                        </router-link>
                     </button>
                 </div>
             </div>
@@ -25,6 +27,11 @@
 <script>
 export default {
     name: 'Topmenu',
+    computed: {
+    currentRouteName() {
+      return this.$route.name;
+    },
+  },
 }
 </script>
 <style lang="sass">

@@ -1,18 +1,34 @@
 <template>
     <nav class="navigation">
         <ul class="navigation-ul">
-            <li><a href="#">Счёт</a></li>
-            <li><a href="#">История</a></li>
-            <li><a href="#">Планирование</a></li>
-            <li><a href="#">Новая запись</a></li>
-            <li><a href="#">Категории</a></li>
+            <li v-for="(item, index) in items" :key="index">
+                <router-link :to="item.path">
+                {{item.name}}
+                </router-link>
+                </li>
         </ul>
     </nav>
 </template>
 
 <script>
 export default {
-    name: 'Navbar'
+    name: 'Navbar',
+    data() {
+    return {
+      items: [
+        { name: 'Счёт', path: '/', component: 'Home' },
+        { name: 'История', path: '/history', component: 'History' },
+        { name: 'Планирование', path: '/planning', component: 'Planning'},
+        { name: 'Категории', path: '/categories', component: 'Categories' }, 
+        { name: 'Новая запись', path: '/record', component: 'Record' },
+      ],
+    };
+  },
+  computed: {
+    currentRouteName() {
+      return this.$route.name;
+    },
+  },
 }
 </script>
 <style lang="sass">
@@ -25,7 +41,7 @@ export default {
     &-ul
         & li
             display: block
-            margin: 10px 0
+            margin: 30px 0
             & a
                 font-family: 'Gotham Pro'
                 color: black
