@@ -5,14 +5,14 @@
                 <div class="topmenu-start">
                     <div class='topmenu-start-component'>
                         <button class='topmenu-start-component-btn'>
-                            <img class='topmenu-start-component-btn-img' src="../assets/menu.svg" alt="menu-svg">
+                            <img class='topmenu-start-component-btn-img' src="../assets/icon/menu.svg" alt="menu-svg">
                         </button>
                     </div>
                     <div class='topmenu-start-component'>
                         12.12.12
                     </div>
                 </div>
-                <div>
+                <div class="topmenu-start-button">
                     <button class="topmenu-start-profile">
                         <router-link :to="'/profile'">
                             <div @click="currentRouteName = ''">User Name</div>
@@ -38,6 +38,8 @@ export default {
 header
     background-color: #89aa94 
     height: 10%
+    @media (max-height: 500px)
+        height: 65px
 header .container
     height: 100%
 .topmenu
@@ -48,8 +50,11 @@ header .container
     &-start
         display: flex
         align-items: center
+        &-button
+            height: 100%
         &-profile
-            padding: 25px 10px
+            height: 100%
+            padding: 0 10px
             font-size: 18px
             &:hover
                 transition: 1s

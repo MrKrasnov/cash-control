@@ -16,7 +16,7 @@ export default {
     data() {
     return {
       items: [
-        { name: 'Счёт', path: '/', component: 'Home' },
+        { name: 'Счет', path: '/', component: 'Home' },
         { name: 'История', path: '/history', component: 'History' },
         { name: 'Планирование', path: '/planning', component: 'Planning'},
         { name: 'Категории', path: '/categories', component: 'Categories' }, 

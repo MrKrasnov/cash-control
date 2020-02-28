@@ -37,9 +37,6 @@ const routes = [
   {
     path: '/history',
     component: History,
-    meta: {
-      requiresAuth: true,
-    },
     children: [
       {
         path: 'detailrecord',
