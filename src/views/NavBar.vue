@@ -19,8 +19,8 @@ export default {
         { name: 'Счет', path: '/', component: 'Home' },
         { name: 'История', path: '/history', component: 'History' },
         { name: 'Планирование', path: '/planning', component: 'Planning'},
-        { name: 'Категории', path: '/categories', component: 'Categories' }, 
         { name: 'Новая запись', path: '/record', component: 'Record' },
+        { name: 'Категории', path: '/categories', component: 'Categories' }, 
       ],
     };
   },

@@ -48,6 +48,8 @@ body
 ::-webkit-scrollbar-thumb 
   border-radius: 10px
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5)
+label:hover, input:hover
+  cursor: url(./assets/icon/punch.png), pointer
 button
   border: none
   background: none
