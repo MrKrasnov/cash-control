@@ -75,4 +75,8 @@ button
     filter: invert(75%)
   &:focus
     filter: contrast(200%)
+input
+  background-color: none
+  &:hover, &:focus
+    outline: none
 </style>
