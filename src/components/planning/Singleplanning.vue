@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>
+        <p class="planning-p">
             <span class="planning-container-flex-bold">Девушка: </span>
              12 122 из 14 0000
         </p>
@@ -18,5 +18,5 @@ export default {
 }
 </script>
 <style lang="sass">
-
+    
 </style>

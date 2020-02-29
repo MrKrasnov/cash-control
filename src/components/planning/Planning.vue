@@ -23,6 +23,7 @@ export default {
 <style lang="sass">
 .planning
     width: 88%
+    margin-bottom: 0
     &-container
         padding-top: 50px
         width: 85%
