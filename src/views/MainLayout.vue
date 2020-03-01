@@ -4,7 +4,11 @@
         <div class="app-flex">
         <navbar/>
         <router-view/>
-        <button class="Added">+</button>
+
+        <router-link :to="'/record'">
+            <button @click="currentRouteName = ''" class="Added">+</button>
+        </router-link>
+        
         </div>
     </div>
 </template>

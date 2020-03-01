@@ -29,7 +29,7 @@ const routes = [
   {
     path: '/registration',
     name: 'Registration',
-    meta: {layout: 'main'},
+    meta: {layout: 'empty'},
     component: Registration,
   },
   {
