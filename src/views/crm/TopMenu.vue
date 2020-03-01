@@ -4,7 +4,7 @@
             <div class="topmenu">
                 <div class="topmenu-start">
                     <div class='topmenu-start-component'>
-                        <button class='topmenu-start-component-btn'>
+                        <button @click="$emit('click')" class='topmenu-start-component-btn'>
                             <img class='topmenu-start-component-btn-img' src="../../assets/icon/menu.svg" alt="menu-svg">
                         </button>
                     </div>

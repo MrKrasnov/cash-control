@@ -47,7 +47,6 @@ export default {
                 font-size: 15px
                 padding: 10px 20px
                 margin-top: 20px
-                margin-left: 25%
                 &:hover
                     transition: 1.5s
                     filter: contrast(200%)
