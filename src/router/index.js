@@ -17,26 +17,31 @@ const routes = [
   {
     path: '/',
     name: 'Home',
+    meta: {layout: 'main'},
     component: Home
   },
   {
     path: '/profile',
     name: 'Profile',
+    meta: {layout: 'main'},
     component: Profile,
   },
   {
     path: '/registration',
     name: 'Registration',
+    meta: {layout: 'main'},
     component: Registration,
   },
   {
     path: '/login',
     name: 'Login',
+    meta: {layout: 'empty'},
     component: Login,
   },
   {
     path: '/history',
     component: History,
+    meta: {layout: 'main'},
     children: [
       {
         path: 'detailrecord',
@@ -48,20 +53,24 @@ const routes = [
   {
     path: '/planning',
     name: 'Planning',
+    meta: {layout: 'main'},
     component: Planning
   },
   {
     path: '/categories',
     name: 'Categories',
+    meta: {layout: 'main'},
     component: Categories
   },
   {
     path: '/record',
     name: 'Record',
+    meta: {layout: 'main'},
     component: Record
   },
   {
     path: '/404',
+    meta: {layout: 'empty'},
     component: PageNotFound,
   },
   {

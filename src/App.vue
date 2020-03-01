@@ -1,23 +1,25 @@
 <template>
   <div id="app">
-    <topmenu/>
-    <div class="app-flex">
-    <navbar/>
-    <router-view/>
-    <button class="Added">+</button>
-    </div>
+    <component :is="layout">
+    </component>
   </div>
 </template>
+
 <script>
-import Topmenu from './views/TopMenu.vue';
-import Navbar from './views/NavBar.vue'
+import MainLayout from './views/MainLayout.vue';
+import EmptyLayout from './views/EmptyLayout.vue';
 
 export default {
   name: "app",
   components: {
-    Topmenu,
-    Navbar
-  }
+    MainLayout,
+    EmptyLayout,
+  },
+  computed: {
+    layout() {
+      return (this.$route.meta.layout || 'empty') + '-layout'
+    }
+  },
 }
 </script>
 <style lang="sass">
