@@ -9,7 +9,7 @@
                         </button>
                     </div>
                     <div class='topmenu-start-component'>
-                        12.12.12
+                        {{date | date('datetime')}}
                     </div>
                 </div>
                 <div class="topmenu-start-button">
@@ -40,6 +40,8 @@ export default {
     data() {
         return {
             menu: false,
+            date: new Date(),
+            interval: null,
         }
     },
     methods: {
@@ -54,6 +56,15 @@ export default {
                 this.menu = true;
             }
         },
+    },
+    mounted(){
+        let dateloc = new Date()
+        this.interval = setInterval(() => {
+            this.date = new Date()
+        }, 1000);
+    },
+    beforeDestroy() {
+        clearInterval(this.interval)
     },
     computed: {
         currentRouteName() {
