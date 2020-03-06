@@ -13,10 +13,20 @@
                     </div>
                 </div>
                 <div class="topmenu-start-button">
-                    <button class="topmenu-start-profile">
-                        <router-link :to="'/profile'">
-                            <div @click="currentRouteName = ''">User Name</div>
-                        </router-link>
+                    <button v-on:click="downmenu()" class="topmenu-start-profile">
+                            <div>User Name &#8595;</div>
+                            <div class="offmenu" :class="{dropmenu: menu}">
+                            <ul>
+                                <li>
+                                    <router-link :to="'/profile'">
+                                    <div>Профиль</div>
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <a v-on:click.prevent="logout" href="#">выйти</a>
+                                </li>
+                            </ul>
+                            </div>
                     </button>
                 </div>
             </div>
@@ -27,14 +37,49 @@
 <script>
 export default {
     name: 'Topmenu',
-    computed: {
-    currentRouteName() {
-      return this.$route.name;
+    data() {
+        return {
+            menu: false,
+        }
     },
+    methods: {
+        logout: function(){
+            // пользователь вышел сообщение в url
+            this.$router.push('/login?message=logout')
+        },
+        downmenu: function(){
+            if(this.menu){
+                this.menu = false;
+            } else{
+                this.menu = true;
+            }
+        },
+    },
+    computed: {
+        currentRouteName() {
+            return this.$route.name;
+        },
   },
 }
 </script>
 <style lang="sass">
+.offmenu
+    position: absolute
+    transform: translate(-10px, -200px)
+    & ul
+        background-color: #bdd77e
+        margin-block-start: 1.2em
+        padding-inline-start: 23px
+        padding-inline-end: 25px
+        border-radius: 0px 0px 10px 10px
+    & ul li
+        display: block
+        margin-bottom: 5px
+        & a:hover
+            color: orange
+.dropmenu
+    transform: translate(-10px, 3px)
+    transition: 1s
 header
     background-color: #89aa94 
     height: 10%

@@ -44,6 +44,8 @@ export default {
     border-right: 2px solid #96a387
     min-height: 100%
     width: 12%
+    @media (max-height: 500px)
+        min-height: 400px
     &-ul
         & li
             display: block
