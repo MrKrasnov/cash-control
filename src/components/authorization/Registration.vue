@@ -16,7 +16,7 @@
                 </form>
                 <p>Уже есть аккаунт?
                     <router-link :to="'/login'">
-                        <div @click="currentRouteName = ''" class="path-regist">ВОЙТИ!</div>
+                        <div class="path-regist">ВОЙТИ!</div>
                     </router-link>
                 </p>
             </div>

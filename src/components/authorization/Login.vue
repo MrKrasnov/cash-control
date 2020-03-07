@@ -4,14 +4,32 @@
             <div class="login-container-content">
                 <h1>Домашняя бухгалтерия</h1>
                 <hr>
-                <form action="#">
-                    <input type="name" placeholder="E-mail"/>
-                    <input type="password" placeholder="Пароль"/>
-                    <button>Войти</button>
+                <form @submit.prevent="onsubmit">
+                    <input
+                     id="email"
+                     type="text"
+                     placeholder="E-mail"
+                     v-model.trim="email"
+                     :class="{invalid: 
+                     ($v.email.$dirty && !$v.email.required) || 
+                     ($v.email.$dirty && !$v.email.email)
+                     }"
+                     />
+                    <input
+                     id="password"
+                     type="password"
+                     placeholder="Пароль"
+                     v-model.trim="password"
+                     :class="{invalid: 
+                     ($v.password.$dirty && !$v.password.required) || 
+                     ($v.password.$dirty && !$v.password.minLength)
+                     }"
+                     />
+                    <button type="submit">Войти</button>
                 </form>
                 <p>Нет аккаунта?
                     <router-link :to="'/registration'">
-                        <div @click="currentRouteName = ''" class="path-regist">ЗАРЕГИСТРИРОВАТЬСЯ</div>
+                        <div class="path-regist">ЗАРЕГИСТРИРОВАТЬСЯ</div>
                     </router-link>
                 </p>
             </div>
@@ -19,11 +37,38 @@
     </div>
 </template>
 <script>
+import {email, required, minLength} from 'vuelidate/lib/validators'
+
 export default {
     name: 'Login',
+    data: () => ({
+        email: '',
+        password: '',
+    }),
+    validations: {
+        email: {email, required},
+        password: {required, minLength: minLength(5)},
+    },
+    methods: {
+        onsubmit() {
+            // вызывается если ошибка
+            if (this.$v.$invalid) {
+                this.$v.$touch()
+                return
+            }
+            // данные которые должны отправлять в back-end
+            const formData = {
+                email: this.email,
+                password: this.password,
+            }
+            this.$router.push('/')
+        }
+    }
 }
 </script>
 <style lang="sass">
+.invalid
+    background-color: red
 .path-regist
     display: inline
     font-size: 13px
