@@ -4,15 +4,47 @@
             <div class="login-container-content">
                 <h1>Домашняя бухгалтерия</h1>
                 <hr>
-                <form action="#">
-                    <input type="name" placeholder="E-mail"/>
-                    <input type="password" placeholder="Пароль"/>
-                    <input type="name" placeholder="Имя"/>
+                <form @submit.prevent="onsubmitreg">
+                    <input
+                     id="email"
+                     type="text"
+                     placeholder="E-mail"
+                     v-model.trim="email"
+                     :class="{invalid: 
+                     ($v.email.$dirty && !$v.email.required) || 
+                     ($v.email.$dirty && !$v.email.email)
+                     }"
+                     />
+                    <input
+                     id="password"
+                     type="password"
+                     placeholder="Пароль"
+                     v-model.trim="password"
+                     :class="{invalid: 
+                     ($v.password.$dirty && !$v.password.required) || 
+                     ($v.password.$dirty && !$v.password.minLength)
+                     }"
+                     />
+                    <input
+                     id="name"
+                     type="text"
+                     placeholder="Имя"
+                     v-model.trim="name"
+                     :class="{invalid: 
+                     ($v.name.$dirty && !$v.name.required) || 
+                     ($v.name.$dirty && !$v.name.minLength) ||
+                     ($v.name.$dirty && !$v.name.maxLength)
+                     }"
+                     />
                     <div class="login-container-content-check">
-                    <input id="check" type="checkbox">
-                    <label for="check">С правилами согласен</label>
+                    <input
+                     v-model="checked"
+                     id="check" type="checkbox"
+                     :class="{invalid: invalidChecked}"
+                     />
+                    <label :class="{invalid: invalidChecked}" for="check">С правилами согласен</label>
                     </div>
-                    <button>Зарегистрироваться</button>
+                    <button type="submit">Зарегистрироваться</button>
                 </form>
                 <p>Уже есть аккаунт?
                     <router-link :to="'/login'">
@@ -24,11 +56,54 @@
     </div>
 </template>
 <script>
+import {email, required, minLength, maxLength} from 'vuelidate/lib/validators'
+
 export default {
     name: 'Registration',
+    data: () => ({
+        email: '',
+        password: '',
+        name: '',
+        checked: false,
+        invalidChecked: false,
+    }),
+    validations: {
+        email: {email, required},
+        password: {required, minLength: minLength(5)},
+        name: {
+            required,
+            minLength: minLength(3),
+            maxLength: maxLength(15),
+            },
+    },
+    methods: {
+        onsubmitreg() {
+            // вызывается если ошибка
+            if (this.$v.$invalid) {
+                this.$v.$touch()
+                return
+            }
+            if (!this.checked) {
+                this.invalidChecked = true;
+                console.log(this.invalidChecked);
+                this.$v.$touch()
+                return
+            }
+            // данные которые должны отправлять в back-end
+            const formData = {
+                email: this.email,
+                password: this.password,
+                name: this.name,
+                checked: this.checked,
+            }
+            this.$router.push('/')
+        }
+    }
 }
 </script>
 <style lang="sass">
+.invalid
+    background-color: red
 .path-regist
     display: inline
     font-size: 13px
