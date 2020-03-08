@@ -2,6 +2,7 @@
     <div class="login">
         <div class="login-container">
             <div class="login-container-content">
+                 <h3 class="answer-messages">{{answer}}</h3>
                 <h1>Домашняя бухгалтерия</h1>
                 <hr>
                 <form @submit.prevent="onsubmit">
@@ -38,16 +39,24 @@
 </template>
 <script>
 import {email, required, minLength} from 'vuelidate/lib/validators'
+import messages from '../../utils/messages'
 
 export default {
     name: 'Login',
     data: () => ({
         email: '',
         password: '',
+        answer: '',
     }),
     validations: {
         email: {email, required},
         password: {required, minLength: minLength(5)},
+    },
+    mounted() {
+        // проверяет url
+        if (messages[this.$route.query.message]) {
+            this.answer = messages[this.$route.query.message]
+        }
     },
     methods: {
         onsubmit() {
@@ -67,7 +76,9 @@ export default {
 }
 </script>
 <style lang="sass">
-
+.answer-messages
+    text-align: center
+    color: #57cc85
 .path-regist
     display: inline
     font-size: 13px

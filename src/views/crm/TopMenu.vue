@@ -23,7 +23,7 @@
                                     </router-link>
                                 </li>
                                 <li>
-                                    <a v-on:click.prevent="logout" href="#">выйти</a>
+                                    <a v-on:click.prevent="logout">выйти</a>
                                 </li>
                             </ul>
                             </div>
