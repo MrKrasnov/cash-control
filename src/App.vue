@@ -23,6 +23,13 @@ export default {
 }
 </script>
 <style lang="sass">
+@keyframes invalidform
+  10%
+    transform: translateX(-30px)
+  60%
+    transform: translateX(30px)
+  100%
+    transform: translateX(0px)
 a
   text-decoration: none
   color: black

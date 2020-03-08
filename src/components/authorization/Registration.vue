@@ -102,8 +102,7 @@ export default {
 }
 </script>
 <style lang="sass">
-.invalid
-    background-color: red
+
 .path-regist
     display: inline
     font-size: 13px
@@ -131,6 +130,13 @@ export default {
             & form
                 display: flex
                 flex-direction: column
+            & .invalid
+                position: relative
+                background: none
+                border-bottom: 1px solid red
+                animation: 1s invalidform
+                &::placeholder
+                    color: red
             & input
                 width: 100%
                 padding-top: 30px
@@ -163,4 +169,5 @@ export default {
                 &:hover
                     transition: 1.5s
                     filter: contrast(200%)
+
 </style>
