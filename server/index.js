@@ -3,3 +3,15 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
+
+//Middleware, initialization
+app.use(bodyParser.json());
+app.use(cors());
+
+const users = require('./routes/api/users');
+
+app.use('/api/users', users);
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => console.log(`Server started on port ${port}`));
