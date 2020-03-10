@@ -25,7 +25,7 @@ class UserService {
         return axios.post(url, info);
     }
     // Delete Users
-    static deletePost(id) {
+    static deleteUser(id) {
         return axios.delete(`${url}${id}`);
     }
 }
