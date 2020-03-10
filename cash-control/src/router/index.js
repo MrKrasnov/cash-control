@@ -10,6 +10,7 @@ import Detailrecord from '../components/history/detail-record/Detailrecord.vue';
 import Profile from '../components/profile/Profile.vue';
 import Login from '../components/authorization/Login.vue';
 import Registration from '../components/authorization/Registration.vue';
+import Admin from '../components/admin/Admin.vue';
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,12 @@ const routes = [
     name: 'Profile',
     meta: {layout: 'main'},
     component: Profile,
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    meta: {layout: 'main'},
+    component: Admin,
   },
   {
     path: '/registration',
