@@ -13,8 +13,10 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const users = await loadUsersCollection();
     await users.insertOne({
-        login: req.body.login,
-        password: req.body.password
+        name: req.body.name,
+        password: req.body.password,
+        email: req.body.email,
+        checked: req.body.checked,
     });
     res.status(201).send();
 });

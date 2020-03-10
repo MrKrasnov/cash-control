@@ -13,7 +13,8 @@
         v-bind:key="user._id"
         >
 
-            <p>{{ user.login }}</p>
+            <p>{{ user.name }}</p>
+            <p>{{ user.email }}</p>
             <p>{{ user._id }}</p>
         </div>
     </div>
@@ -27,14 +28,12 @@ export default {
         return{
             users: [],
             error: '',
-            text: '',
         }
     },
     // Get Users
     async created() {
         try{
             this.users = await UserService.getUsers();
-            console.log(this.users);
         } catch(err){
             this.error = err.message;
         }

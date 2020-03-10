@@ -57,6 +57,7 @@
 </template>
 <script>
 import {email, required, minLength, maxLength} from 'vuelidate/lib/validators'
+import UserService from '../../UsersService';
 
 export default {
     name: 'Registration',
@@ -77,7 +78,7 @@ export default {
             },
     },
     methods: {
-        onsubmitreg() {
+        async onsubmitreg() {
             // вызывается если ошибка
             if (this.$v.$invalid) {
                 this.$v.$touch()
@@ -96,6 +97,7 @@ export default {
                 name: this.name,
                 checked: this.checked,
             }
+            await UserService.insertUser(formData);
             this.$router.push('/')
         }
     }
